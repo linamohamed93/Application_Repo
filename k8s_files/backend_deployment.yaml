@@ -14,6 +14,13 @@ spec:
       labels:
         app: backend
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app: backend
+            topologyKey: kubernetes.io/hostname
       containers:
       - name: backend
         image: 101561167685.dkr.ecr.us-east-1.amazonaws.com/tetris-backend:13
