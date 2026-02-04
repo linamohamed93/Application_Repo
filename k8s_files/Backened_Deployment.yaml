@@ -15,11 +15,17 @@ spec:
         app: backend
     spec:
       containers:
-      - name: backendecrImage
-        image: 101561167685.dkr.ecr.us-east-1.amazonaws.com/tetris-backend
+      - name: backend
+        image: 101561167685.dkr.ecr.us-east-1.amazonaws.com/tetris-backend:13
         ports:
         - containerPort: 4000
-
-        
-        
-      
+        env:
+        - name: REDIS_HOST
+          value: redis
+        - name: REDIS_PORT
+          value: "6379"
+        readinessProbe:
+          tcpSocket:
+            port: 4000
+          initialDelaySeconds: 5
+          periodSeconds: 10
