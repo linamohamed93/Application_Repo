@@ -4,12 +4,13 @@ metadata:
   name: frontend-service
   labels:
     app: frontend
+  namespace: default
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
 spec:
+  type: LoadBalancer
   selector:
     app: frontend
-
   ports:
-    - port: 80
+    - port: 80        
       targetPort: 80
-
-  type: LoadBalancer
