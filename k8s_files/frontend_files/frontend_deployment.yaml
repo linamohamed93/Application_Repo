@@ -19,9 +19,9 @@ spec:
         image: 101561167685.dkr.ecr.us-east-1.amazonaws.com/tetris-frontend:7
         ports:
         - containerPort: 80
-        env:
-        - name: BACKEND_URL
-          value: http://backend:4000
+        envFrom:
+        - configMapRef:
+            name: frontend-config
         readinessProbe:
           httpGet:
             path: /          # or your real health path

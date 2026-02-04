@@ -19,11 +19,9 @@ spec:
         image: 101561167685.dkr.ecr.us-east-1.amazonaws.com/tetris-backend:13
         ports:
         - containerPort: 4000
-        env:
-        - name: REDIS_HOST
-          value: redis
-        - name: REDIS_PORT
-          value: "6379"
+        envFrom:
+        - configMapRef:
+            name: backend-config
         readinessProbe:
           tcpSocket:
             port: 4000
