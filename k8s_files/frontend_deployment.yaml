@@ -25,7 +25,7 @@ spec:
               topologyKey: kubernetes.io/hostname
       containers:
       - name: frontend
-        image: 101561167685.dkr.ecr.us-east-1.amazonaws.com/tetris-frontend:7
+        image: shymaa145/tetris-frontend:5
         ports:
         - containerPort: 80
         envFrom:
